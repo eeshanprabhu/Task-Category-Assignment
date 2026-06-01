@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+langgraph
+langchain
+langchain-openai
+jinja2
+pyngrok
+pydantic
+openai
