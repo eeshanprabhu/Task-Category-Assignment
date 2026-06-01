@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Extractor</title>
+</head>
+<body>
+
+    <h2>Please Enter the Unstructured Meeting-Style or Task-Style Input</h2>
+
+    <input
+        type="text"
+        id="query"
+        style="width:500px;"
+        placeholder="Please Enter the Query Here"
+    >
+
+    <button onclick="submitQuery()">Submit</button>
+
+    <pre id="result"></pre>
+
+    <script>
+        async function submitQuery() {
+
+            const query = document.getElementById("query").value;
+
+            const response = await fetch(
+                `/extract-tasks?query=${encodeURIComponent(query)}`
+            );
+
+            const data = await response.json();
+
+            document.getElementById("result").textContent =
+                JSON.stringify(
+                    data.extracted_tasks_w_asignees,
+                    null,
+                    2
+                );
+        }
+    </script>
+
+</body>
+</html>
